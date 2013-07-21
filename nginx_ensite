@@ -5,7 +5,17 @@
 # Enable Nginx site
 
 SITE=$1
-if [ -f $SITE -a -n $SITE]; then
+
+EXPECTED_ARGS=1
+ERROR_BARDARGS=128
+
+if [ $# -ne $EXPECTED_ARGS ]
+then
+    echo "Usage: `basename $0` site_name"
+    exit $ERROR_BARDARGS
+fi
+
+if [ -f $SITE ]; then
   ln -s /etc/nginx/sites-available/$SITE /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist"

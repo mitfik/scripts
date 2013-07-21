@@ -5,7 +5,17 @@
 # Disable Nginx site
 
 SITE=$1
-if [ -L $SITE -a -n $SITE]; then
+
+EXPECTED_ARGS=1
+ERROR_BARDARGS=128
+
+if [ $# -ne $EXPECTED_ARGS ]
+then
+    echo "Usage: `basename $0` site_name"
+    exit $ERROR_BARDARGS
+fi
+
+if [ -L $SITE]; then
   rm /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist or is not a symlink"
