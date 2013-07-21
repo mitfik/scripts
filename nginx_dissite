@@ -5,7 +5,7 @@
 # Disable Nginx site
 
 SITE=$1
-if [ -L $SITE -a -z $SITE]; then
+if [ -L $SITE -a -n $SITE]; then
   rm /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist or is not a symlink"

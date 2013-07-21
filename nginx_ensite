@@ -5,7 +5,7 @@
 # Enable Nginx site
 
 SITE=$1
-if [ -f $SITE -a -z $SITE]; then
+if [ -f $SITE -a -n $SITE]; then
   ln -s /etc/nginx/sites-available/$SITE /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist"
