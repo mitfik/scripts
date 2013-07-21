@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Author: Robert Mitwicki
+#
+# Enable Nginx site
+
+SITE=$1
+if [ -f $SITE ]; then
+  ln -s /etc/nginx/sites-available/$SITE /etc/nginx/sites-enabled/$SITE
+else
+  echo "Site does not exist"
+  echo "Available sites:"
+  ls /etc/nginx/sites-available
+  exit 1;
+fi
