@@ -15,7 +15,7 @@ then
     exit $ERROR_BARDARGS
 fi
 
-if [ -L $SITE]; then
+if [ -L /etc/nginx/sites-enabled/$SITE]; then
   rm /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist or is not a symlink"

@@ -15,7 +15,7 @@ then
     exit $ERROR_BARDARGS
 fi
 
-if [ -f $SITE ]; then
+if [ -f /etc/nginx/sites-available/$SITE ]; then
   ln -s /etc/nginx/sites-available/$SITE /etc/nginx/sites-enabled/$SITE
 else
   echo "Site does not exist"
